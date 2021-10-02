@@ -3,6 +3,7 @@
     "description": "vue-pwa app",
     "short_name": "vuepwa",
     "start_url": "index.html",
+    "scope": "." ,
     "display": "standalone",
     "background_color": "#fdfdfd",
     "theme_color": "#7957d5",
