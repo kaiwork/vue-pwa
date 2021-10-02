@@ -2,7 +2,7 @@
 
 A Personal portfolio build with buefy [https://buefy.org/] . Incorporating pwa and power of CDNs. It just works ! 
 
-The website is hosted at https://github.com/kaiwork/vue-pwa
+The website is hosted at https://kaiwork.github.io/vue-pwa/
 using Github Pages.
 
 ## Notes
