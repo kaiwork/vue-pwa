@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="./images/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="./images/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" href="./images/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" href="./images/icons/icon-512x512.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#7957d5">
+    <meta name="theme-color" content="#7957d5">
+
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="https://unpkg.com/vue"></script>
+    <!-- Full bundle -->
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <template>
+            <b-loading is-full-page v-model="isLoading" :can-cancel="false">
+                <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin">
+                </b-icon>
+                <h1 class="title is-spaced has-text-black">Loading</h1>
+            </b-loading>
+        </template>
+        <!-- navbar  -->
+        <template>
+            <b-navbar fixed-top="true">
+                <template #brand>
+                    <b-navbar-item>
+                        <b-navbar-item href="#app">
+                            <b-image src="https://avatars.dicebear.com/api/jdenticon/john.svg"></b-image> &nbsp <strong>John Doe</strong>
+                        </b-navbar-item>
+                    </b-navbar-item>
+                </template>
+
+                <template #end>
+                    <b-navbar-item href="#profile">
+                        <i class="fas fa-user"></i> &nbsp Profile
+                    </b-navbar-item>
+                    <b-navbar-item href="#skills">
+                        <i class="fas fa-code"></i> &nbsp Skills
+                    </b-navbar-item>
+                    <b-navbar-item href="#resume">
+                        <i class="far fa-file"></i> &nbsp Resume
+                    </b-navbar-item>
+                    <b-navbar-item tag="div">
+                        <div class="buttons">
+                            <a class="button is-link is-outlined" href="#contact"> <i class="far fa-address-book"></i>
+                                &nbsp Contact Me</a>
+                        </div>
+                    </b-navbar-item>
+                </template>
+            </b-navbar>
+        </template>
+
+        <!-- hero section  -->
+        <div class="columns is-centered is-vcentered">
+            <div class="column">
+                <template>
+                    <section>
+                        <b-image src="images/main.jpg" placeholder="images/main-blur.jpg" ratio="2by1"></b-image>
+                    </section>
+                </template>
+            </div>
+            <div class="column is-overlay  ">
+                <div class="section">
+                    <section class="hero is-large has-text-centered">
+                        <div class="hero-body ">
+                            <p class="title is-size-1 has-text-light is-capitalized is-family-monospace">
+                                John Doe
+                            </p>
+                            <p class="subtitle is-size-2 has-text-light is-capitalized is-family-monospace">
+                                Software Developer
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="profile">
+            <div class="notification is-link">
+                Web developer with more than 4 years of well-rounded experience
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="title is-4"><i class="fas fa-user"></i> &nbsp Profile</h3>
+                    <div class="content">
+                        <table class="table is-hoverable">
+                            <tbody>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>John Doe address</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>0123-456789</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>john@doe</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <br>
+
+                </div>
+            </div>
+        </div>
+        <!-- Skills Section -->
+        <div class="section" id="skills">
+            <section class="hero is-medium has-text-centered">
+                <div class="hero-body ">
+                    <p class="title is-size-1 has-text-dark is-capitalized">
+                        <i class="fas fa-code"></i> My Skills
+                    </p>
+
+                    <section>
+
+                        <b-table :data="data" ref="table" paginated per-page="5"
+                            detailed detail-key="id" :detail-transition="fade"
+                            :show-detail-icon="true" aria-next-label="Next page" aria-previous-label="Previous page"
+                            aria-page-label="Page" aria-current-label="Current page">
+
+                            <b-table-column centered field="id" label="ID" width="40" numeric v-slot="props">
+                                {{ props.row.id }}
+                            </b-table-column>
+
+                            <b-table-column centered field="language" label="Programming Language" sortable
+                                v-slot="props">
+                                {{ props.row.language }}
+                            </b-table-column>
+
+                            <b-table-column centered field="framework" label="Framework" sortable v-slot="props">
+                                {{ props.row.framework }}
+                            </b-table-column>
+
+                            <b-table-column field="skill" label="Skill Level" v-slot="props">
+                                <b-rate v-model="props.row.skill" :spaced="true" :disabled="true"></b-rate>
+
+                            </b-table-column>
+
+                            <template #detail="props">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h3 class="title is-4">Profile</h3>
+                                        <div class="content">
+                                            <table class="table is-hoverable has-text-left">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Programming Language </td>
+                                                        <td> {{ props.row.language }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Programming Framework</td>
+                                                        <td> {{ props.row.framework }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Skill Level</td>
+                                                        <td>
+                                                            <div class="align-items-center">
+                                                                <b-rate v-model="props.row.skill" :spaced="true"
+                                                                    :disabled="true"></b-rate>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div> <br>
+
+                                    </div>
+                                </div>
+                            </template>
+                        </b-table>
+
+                    </section>
+
+
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Resume Section -->
+        <div class="section" id="resume">
+            <section class="hero is-primary is-small has-text-centered">
+                <div class="hero-body ">
+                    <p class="title is-size-1 has-text-light is-capitalized">
+                        <i class="far fa-file"></i> My Resume
+                    </p>
+                    <b-button size="is-medium" type="is-primary is-light"><i class="fas fa-download"></i> Download
+                    </b-button>
+                </div>
+        </div>
+        </section>
+
+    </div>
+
+
+
+
+    <!-- contact form -->
+    <div class="section" id="contact">
+        <p class="title is-size-1 has-text-dark has-text-centered is-capitalized">
+            <i class="far fa-address-book"></i> Contact Me
+        </p>
+        <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSc-y8NPBMy1k3F2FYjZP5doAZixT9fFK6rZEYMGOIhXsIG0zA/viewform?embedded=true"
+            scrolling="no" width="100%" height="1029" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+    </div>
+
+
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
