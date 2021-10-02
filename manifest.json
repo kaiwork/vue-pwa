@@ -1,12 +1,12 @@
 {
-    "theme_color": "#7957d5",
-    "background_color": "#fdfdfd",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
     "name": "vue-pwa",
     "description": "vue-pwa app",
     "short_name": "vuepwa",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#fdfdfd",
+    "theme_color": "#7957d5",
+    "orientation": "portrait-primary",
     "icons": [
         {
             "src": "images/icons/icon-192x192.png",
