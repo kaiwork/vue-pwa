@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="container">
 
         <template>
             <b-loading is-full-page v-model="isLoading" :can-cancel="false">
@@ -38,7 +38,8 @@
                 <template #brand>
                     <b-navbar-item>
                         <b-navbar-item href="#app">
-                            <b-image src="https://avatars.dicebear.com/api/jdenticon/john.svg"></b-image> &nbsp <strong>John Doe</strong>
+                            <b-image src="https://avatars.dicebear.com/api/jdenticon/john.svg"
+                                placeholder="images/icons/icon-192x192.png"></b-image> &nbsp <strong>John Doe</strong>
                         </b-navbar-item>
                     </b-navbar-item>
                 </template>
@@ -64,29 +65,26 @@
         </template>
 
         <!-- hero section  -->
-        <div class="columns is-centered is-vcentered">
-            <div class="column">
-                <template>
-                    <section>
-                        <b-image src="images/main.jpg" placeholder="images/main-blur.jpg" ratio="2by1"></b-image>
-                    </section>
-                </template>
-            </div>
-            <div class="column is-overlay  ">
-                <div class="section">
-                    <section class="hero is-large has-text-centered">
-                        <div class="hero-body ">
-                            <p class="title is-size-1 has-text-light is-capitalized is-family-monospace">
-                                John Doe
-                            </p>
-                            <p class="subtitle is-size-2 has-text-light is-capitalized is-family-monospace">
-                                Software Developer
-                            </p>
-                        </div>
-                    </section>
+        <section class="hero has-text-centered">
+            <div class="hero-body ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <b-image src="images/main.jpg" placeholder="images/main-blur.jpg" ratio="16by9"></b-image>
+                        </figure>
+                    </div>
+                    <div class="card-content  is-overlay is-vertical-center">
+                        <p class="title is-size-3-mobile is-size-1 has-text-light is-capitalized is-family-monospace">
+                            John Doe
+                        </p>
+                        <p class="subtitle is-size-4-mobile has-text-light is-capitalized is-family-monospace">
+                            Software Developer
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
         <div class="section" id="profile">
             <div class="notification is-link">
                 Web developer with more than 4 years of well-rounded experience
@@ -127,8 +125,7 @@
 
                     <section>
 
-                        <b-table :data="data" ref="table" paginated per-page="5"
-                            detailed detail-key="id"
+                        <b-table :data="data" ref="table" paginated per-page="5" detailed detail-key="id"
                             :show-detail-icon="true" aria-next-label="Next page" aria-previous-label="Previous page"
                             aria-page-label="Page" aria-current-label="Current page">
 
