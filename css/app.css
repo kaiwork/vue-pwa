@@ -2,10 +2,9 @@ html {
     scroll-behavior: smooth;
   }
 
-@media only screen and (min-width: 1025px) {
-  .is-vertical-center {
+
+@media only screen and (min-width: 600px) {
+  .is-custom-vertical-center {
     top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
   }
 }
